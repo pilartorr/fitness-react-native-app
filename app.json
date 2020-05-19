@@ -1,0 +1,17 @@
+{
+  "name": "fitness-react-native",
+  "displayName": "fitness-react-native",
+  "expo": {
+    "name": "fitness-react-native",
+    "slug": "fitness-react-native",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
