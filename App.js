@@ -88,6 +88,7 @@ export default function App() {
   return (
     <Provider store={createStore(reducer)}>
       <View style={{ flex: 1 }}>
+        <AppStatusBar backgroundColor={purple} barStyle="light-content" />
         <NavigationContainer>
           <MainNav/>
         </NavigationContainer>
