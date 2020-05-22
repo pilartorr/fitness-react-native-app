@@ -1,6 +1,7 @@
  
 import React from 'react'
-import { View, Platform } from 'react-native'
+import { View, Platform, StatusBar } from 'react-native'
+import Constants from "expo-constants";
 
 import AddEntry from './components/AddEntry'
 import History from './components/History'
@@ -16,6 +17,15 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { purple, white } from './utils/colors'
 import { FontAwesome, Ionicons } from '@expo/vector-icons'
 
+
+function AppStatusBar({ backgroundColor, ...props }) {
+  return (
+    <View style={{ backgroundColor, height: Constants.statusBarHeight }}>
+      <StatusBar translucent backgroundColor={backgroundColor} {...props} />
+    </View>
+  );
+}
+
 const Tabs =
   Platform.OS === "ios"
     ? createBottomTabNavigator()
@@ -25,6 +35,7 @@ export default function App() {
   return (
     <Provider store={createStore(reducer)}>
       <View style={{ flex: 1 }}>
+        <AppStatusBar backgroundColor={purple} barStyle="light-content" />
         <NavigationContainer>
           <Tabs.Navigator
             initialRouteName="AddEntry"
