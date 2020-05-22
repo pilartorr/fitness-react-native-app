@@ -8,13 +8,13 @@ import UdaciFitnessCalendar from 'udacifitness-calendar-fix'
 import { white } from '../utils/colors'
 import DateHeader from './DateHeader'
 import MetricCard from './MetricCard'
-import { AppLoading} from 'expo'
+import { AppLoading } from 'expo'
 
 class History extends Component {
     state = {
         ready: false,
     }
-    componentDidMount () {
+    UNSAFE_componentWillMount () {
         const { dispatch } = this.props
 
         fetchCalendarResults()
@@ -51,11 +51,15 @@ class History extends Component {
     }
     render() {
         const { entries } = this.props
-        const { ready } = this.state
 
-        if (ready === false) {
-            return <AppLoading />
-        }
+        if (!this.state.ready) {
+            return (
+              <AppLoading
+                startAsync={this._cacheResourcesAsync}
+                onFinish={() => this.setState({ ready: true })}
+                onError={console.warn}
+              />
+        ); }
 
         return (
             <UdaciFitnessCalendar
