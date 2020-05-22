@@ -34,8 +34,7 @@ export default function App() {
                   <FontAwesome name="plus-square" size={size} color={color} />
                 } else if (route.name === "History") {
                   <Ionicons name="ios-bookmarks" size={size} color={color} />
-              }
-                return icon;
+                }
               }
             })}
             tabBarOptions={{
