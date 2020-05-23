@@ -20,6 +20,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import { purple, white } from './utils/colors'
 import { FontAwesome, Ionicons } from '@expo/vector-icons'
+import { setLocalNotification } from './utils/helpers'
+import { render } from 'react-dom';
 
 
 function AppStatusBar({ backgroundColor, ...props }) {
@@ -88,15 +90,20 @@ const MainNav = () => (
   </Stack.Navigator>
 );
 
-export default function App() {
-  return (
-    <Provider store={createStore(reducer)}>
-      <View style={{ flex: 1 }}>
-        <AppStatusBar backgroundColor={purple} barStyle="light-content" />
-        <NavigationContainer>
-          <MainNav/>
-        </NavigationContainer>
-      </View>
-    </Provider>
-  );
+export default class App extends React.Component {
+  componentDidMount() {
+    setLocalNotification()
+  }
+  render() {
+    return (
+      <Provider store={createStore(reducer)}>
+        <View style={{ flex: 1 }}>
+          <AppStatusBar backgroundColor={purple} barStyle="light-content" />
+          <NavigationContainer>
+            <MainNav/>
+          </NavigationContainer>
+        </View>
+      </Provider>
+    );
+  } 
 }
