@@ -6,6 +6,7 @@ import Constants from "expo-constants";
 import AddEntry from './components/AddEntry'
 import History from './components/History'
 import EntryDetail from './components/EntryDetail'
+import Live from './components/Live'
 
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
@@ -43,6 +44,8 @@ const TabNav = () => (
           <FontAwesome name="plus-square" size={size} color={color} />
         } else if (route.name === "History") {
           <Ionicons name="ios-bookmarks" size={size} color={color} />
+        } else if (route.name === "Live") {
+          <Ionicons name="ios-speedometer" size={size} color={color} />
         }
       }
     })}
@@ -63,6 +66,7 @@ const TabNav = () => (
   >
     <Tabs.Screen name="Add Entry" component={AddEntry} />
     <Tabs.Screen name="History" component={History} />
+    <Tabs.Screen name="Live" component={Live} />
   </Tabs.Navigator>
 )
 
